@@ -23,7 +23,7 @@ const DetailProduct = ({ detailId }) => {
 
   return (
     <div className="rounded-lg shadow-lg p-4">
-      <section className="product-details flex gap-8">
+      <section className="product-details sm:flex gap-8">
         <div className="border-2 border-slate-200 p-1 overflow-hidden rounded-lg shadow-md">
           <div className="relative">
             <Carousel
@@ -58,7 +58,7 @@ const DetailProduct = ({ detailId }) => {
             ))}
           </div>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 mt-4 sm:mt-0">
           {detailProduct.off && (
             <div className="flex gap-2">
               <strong className="text-red-500">SALE</strong>
