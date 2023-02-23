@@ -6,6 +6,9 @@ import Rating from '@mui/material/Rating';
 import { Button } from '@mui/material';
 import { Image } from '@mantine/core';
 import { getDiscountPrice } from '../../utils';
+import { toast, ToastContainer } from 'react-toastify';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 
 const DetailProduct = ({ detailId }) => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -20,6 +23,30 @@ const DetailProduct = ({ detailId }) => {
   }
 
   const detailProduct = data.find((product) => product.id === detailId);
+
+  const handleButtonBuy = () => {
+    toast.success(`Sucessfully buy ${detailProduct.name}`, {
+      position: 'top-center',
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: 'light',
+    });
+  };
+
+  const handleButtonAddToCart = () => {
+    toast.success(`Sucessfully add ${detailProduct.name} to cart`, {
+      position: 'top-center',
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: 'light',
+    });
+  };
 
   return (
     <div className="rounded-lg shadow-lg p-4">
@@ -97,16 +124,37 @@ const DetailProduct = ({ detailId }) => {
           </div>
           <div className="border-b-2 border-gray-300 w-full"></div>
           <div className="flex gap-4 mt-4">
-            <Button color="warning" variant="contained">
+            <Button
+              color="warning"
+              variant="contained"
+              onClick={handleButtonAddToCart}
+              startIcon={<AddShoppingCartIcon />}
+            >
               Add To Cart
             </Button>
-            <Button variant="contained" color="success">
+            <Button
+              variant="contained"
+              color="success"
+              onClick={handleButtonBuy}
+              startIcon={<ShoppingBasketIcon />}
+            >
               Buy Now
             </Button>
           </div>
         </div>
       </section>
-      <section className="product-all-info"></section>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };

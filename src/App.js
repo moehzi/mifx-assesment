@@ -1,9 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import DetailProduct from './components/DetailProduct';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import OtherProducts from './components/OtherProducts';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
 
 const queryClient = new QueryClient();
 
