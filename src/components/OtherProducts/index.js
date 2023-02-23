@@ -31,7 +31,7 @@ const OtherProducts = ({ onClick, detailId }) => {
             key={product.id}
             id={product.id}
             size="200px"
-            className="cursor-pointer"
+            className="cursor-pointer hover:border-2 p-2 rounded-md border-green-300 hover:transition-all"
             onClick={onClick}
           >
             {product.off && (
