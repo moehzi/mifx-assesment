@@ -10,8 +10,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 
-const DetailProduct = ({ detailId }) => {
-  const [slideIndex, setSlideIndex] = useState(0);
+const DetailProduct = ({ detailId, slideIndex, setSlideIndex }) => {
   const { error, isLoading, data } = useQuery(['products'], fetchProducts);
 
   if (isLoading) {
@@ -49,9 +48,9 @@ const DetailProduct = ({ detailId }) => {
   };
 
   return (
-    <div className="rounded-lg shadow-lg p-4">
-      <section className="product-details sm:flex gap-8">
-        <div className="border-2 border-slate-200 p-1 overflow-hidden rounded-lg shadow-md">
+    <div className="p-4 rounded-lg shadow-lg">
+      <section className="gap-8 product-details sm:flex">
+        <div className="p-1 overflow-hidden border-2 rounded-lg shadow-md border-slate-200">
           <div className="relative">
             <Carousel
               sx={{ maxWidth: 350 }}
@@ -71,7 +70,7 @@ const DetailProduct = ({ detailId }) => {
               {slideIndex + 1}/{detailProduct.images.length}
             </p>
           </div>
-          <div className="flex w-16 mx-auto justify-center gap-2">
+          <div className="flex justify-center w-16 gap-2 mx-auto">
             {detailProduct.images.map((image, index) => (
               <img
                 className={`border rounded-lg ${
@@ -93,7 +92,7 @@ const DetailProduct = ({ detailId }) => {
                 className="w-[70px] h-[30px] bg-red-500 flex 
  justify-center items-center"
               >
-                <strong className="text-white text-xs">
+                <strong className="text-xs text-white">
                   {detailProduct.off}
                 </strong>
               </div>
@@ -101,7 +100,7 @@ const DetailProduct = ({ detailId }) => {
           )}
 
           <strong className="text-lg">{detailProduct.name}</strong>
-          <div className="flex gap-2 items-center">
+          <div className="flex items-center gap-2">
             <Rating name="read-only" value={detailProduct.rating} readOnly />
             <p className="text-gray-400">
               ({detailProduct.reviewCount} reviews)
@@ -117,12 +116,12 @@ const DetailProduct = ({ detailId }) => {
               {detailProduct.price}
             </p>
             {detailProduct.off && (
-              <p className="text-red-500 font-semibold text-3xl">
+              <p className="text-3xl font-semibold text-red-500">
                 ${getDiscountPrice(detailProduct)}
               </p>
             )}
           </div>
-          <div className="border-b-2 border-gray-300 w-full"></div>
+          <div className="w-full border-b-2 border-gray-300"></div>
           <div className="flex gap-4 mt-4">
             <Button
               color="warning"

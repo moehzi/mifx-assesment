@@ -9,16 +9,23 @@ const queryClient = new QueryClient();
 
 function App() {
   const [detailId, setDetailId] = useState('1');
+  const [slideIndex, setSlideIndex] = useState(0);
 
   const handleClickProduct = (e) => {
     const productCurrentId = e.currentTarget.id;
     setDetailId(productCurrentId);
+    setSlideIndex(0);
   };
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="container mx-auto my-8">
-        <DetailProduct detailId={detailId} setDetailID={setDetailId} />
+        <DetailProduct
+          detailId={detailId}
+          setDetailID={setDetailId}
+          setSlideIndex={setSlideIndex}
+          slideIndex={slideIndex}
+        />
         <OtherProducts onClick={handleClickProduct} detailId={detailId} />
       </div>
     </QueryClientProvider>
